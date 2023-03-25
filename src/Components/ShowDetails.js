@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 import { CircularProgress } from "@mui/material"
 import Card from './Card'
 
 function ShowDetails() {
 
-    const { PINCODE } = useParams()
+    // const { pincode } = useParams()
     const [details, setDetails] = useState([])          // first time get Details
     const [search, setsearch] = useState("")            // this is for search
     const [filtered, setFiltered] = useState([])        // this is for filtered deatils
     const [isLoading, setIsLoading] = useState(false);
-    const [pincode, setPincode] = useState('442401')    // This is just extra for now
+    // const [pincode, setPincode] = useState()    // This is just extra for now
+    // const [input, setInput] = useState("");
 
-
+    let pincode = "442401"
 
     let handelChange = (e) => {
         setsearch(e.target.value)
@@ -28,7 +29,7 @@ function ShowDetails() {
 
         setIsLoading(true)
 
-        fetch(`https://api.postalpincode.in/pincode/${PINCODE}`)
+        fetch(`https://api.postalpincode.in/pincode/${pincode}`)
             .then((res) => {
                 console.log(res);
                 return res.json()
@@ -42,12 +43,14 @@ function ShowDetails() {
         setIsLoading(false)
 
     }, [])
+    console.log(details)
 
     return (
         <div>
             {isLoading ? <CircularProgress /> :
                 <div>
                     {details.map((item, idx) => (
+
                         <div key={idx}>
                             <Card
                                 Name={item.Name}
@@ -65,7 +68,7 @@ function ShowDetails() {
                 </div>
             }
 
-        </div>
+        </div >
     )
 }
 

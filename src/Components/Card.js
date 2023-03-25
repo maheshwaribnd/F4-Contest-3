@@ -14,7 +14,7 @@ function Card({ Name, BranchType, DeliveryStatus, District, State, Country, pinc
                 <h2>Branch Type: {BranchType} </h2>
                 <h2>Delivery Status: {DeliveryStatus} </h2>
                 <h2>District: {District} </h2>
-                <h2>Division: {State} </h2>
+                <h2>State: {State} </h2>
                 <h2>Country: {Country}</h2>
             </div>
         </>
